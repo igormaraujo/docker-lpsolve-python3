@@ -13,6 +13,13 @@ Docker
 
 ### Installing
 
+#### From Docker Hub
+
+1. Create and start the container with name lpsolve
+```
+docker run --name lpsolve igormaraujo/lpsolve-python3
+```
+#### Build image from Dockerfile
 1. Download and extract the project zip file or git clone the repository.
 2. In the terminal, inside the project folder where has the Dockerfile, use the command below to build the Docker Image:
 ```
@@ -22,24 +29,28 @@ docker build --rm -t lpsolve .
 ```
 docker run --name lpsolve lpsolve
 ```
-3.1.(optional) Port Forwarding
+
+#### Options
+- Port Forwarding
 ```
-docker run -p 8001:8888 --name lpsolve lpsolve
+docker run -p 8001:8888 --name lpsolve igormaraujo/lpsolve-python3
 ```
-3.2.(optional) Volume (A volume allows data to persist, even when a container is deleted. Volumes are also a convenient way to share data between the host and the container)
+- Volume (A volume allows data to persist, even when a container is deleted. Volumes are also a convenient way to share data between the host and the container)
 ```
-docker run -v "$HOME":/home/jovyan/work --name lpsolve lpsolve
+docker run -v "$HOME":/home/jovyan/work --name lpsolve igormaraujo/lpsolve-python3
 ```
-4. Starting a container already created
+#### Useful commands
+
+- Starting a container already created
 ```
 docker start lpsolve
 ```
-(Optional). Get jupyter notebook token
+- Get jupyter notebook token
 ```
 docker exec lpsolve jupyter notebook list
 ```
 
-(Optional). Docker container terminal as root
+- Docker container terminal as root
 ```
 docker exec -it --user root lpsolve bash
 ```
@@ -47,7 +58,7 @@ docker exec -it --user root lpsolve bash
 ## Running the tests
 
 1. Access the URL [http://localhost:8888] from a browser
-1.1 (Optional) Enter with the notebook token
+  1.1 (Optional) Enter with the notebook token
 2. The folder examples has two notebook document: **ex.ipynb** with a variety of simples usage cases, and **example1.ipnb** with a detail usage case. Both examples are included in [lpsolve python extension](http://lpsolve.sourceforge.net/5.5/Python.htm)
 (Optional) It is possible to install python libraries as *numpy*, with the command in the JupyterLab terminals:
 ```
@@ -60,6 +71,15 @@ conda install numpy
 ```
 docker rm lpsolve
 ```
+
+#### From Docker Hub
+
+2. Remove docker image
+```
+docker image rm igormaraujo/lpsolve-python3
+```
+
+#### Build image from Dockerfile
 
 2. Remove docker image
 ```
@@ -81,7 +101,7 @@ compilers
 See also the list of [contributors](https://github.com/igormaraujo/docker-lpsolve-python3/contributors) who participated in this project.
 
 ## License
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
+This project is licensed under the MIT License - see the [LICENSE.md](https://github.com/igormaraujo/docker-lpsolve-python3/blob/master/LICENSE) file for details
 
 ## Acknowledgments
 - meow - https://stackoverflow.com/a/44922060/12347166
